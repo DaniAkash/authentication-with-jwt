@@ -1,5 +1,5 @@
 {
-  "name": "node-sandbox",
+  "name": "express-jwt-authentication",
   "version": "1.0.0",
   "description": "Simple Node Sandbox",
   "main": "src/index.js",
@@ -12,5 +12,6 @@
   },
   "devDependencies": {
     "nodemon": "1.18.4"
-  }
+  },
+  "keywords": []
 }
