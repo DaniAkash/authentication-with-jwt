@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 
 const authRouter = express.Router();
 
@@ -24,13 +25,23 @@ authRouter.route('/')
       &&
       testAdminUser.password === req.body.password
     ) {
+
+      const token = jwt.sign({
+        sub: "user",
+        username: req.body.username
+      }, 
+      process.env.JWT_KEY, 
+      {
+        expiresIn: "3 hours"
+      });
+
       res.status(200).json({
-        authToken: ""
+        authToken: token
       });
     } else {
       res.status(401).json({
         error: "user not found"
-      })
+      });
     }
   })
 
